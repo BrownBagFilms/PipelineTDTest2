@@ -1,0 +1,72 @@
+//Maya ASCII 2013ff10 scene
+//Name: Lights_LGT.ma
+//Last modified: Tue, Jul 11, 2017 02:58:11 PM
+//Codeset: 1252
+requires maya "2013ff10";
+requires "stereoCamera" "10.0";
+currentUnit -l centimeter -a degree -t film;
+fileInfo "application" "maya";
+fileInfo "product" "Maya 2013";
+fileInfo "version" "2013 x64";
+fileInfo "cutIdentifier" "201301140020-856945";
+fileInfo "osv" "Microsoft Windows 7 Business Edition, 64-bit Windows 7 Service Pack 1 (Build 7601)\n";
+createNode transform -n "directionalLight1";
+	setAttr ".t" -type "double3" 0 9.3909307657771404 0 ;
+	setAttr ".r" -type "double3" -77.607477401395911 38.317697713460319 -50.022101823079119 ;
+createNode directionalLight -n "directionalLightShape1" -p "directionalLight1";
+	setAttr -k off ".v";
+createNode transform -n "ambientLight1";
+createNode ambientLight -n "ambientLightShape1" -p "ambientLight1";
+	setAttr -k off ".v";
+	setAttr ".cl" -type "float3" 0.36223391 0.42269015 0.50376135 ;
+select -ne :time1;
+	setAttr ".o" 1;
+	setAttr ".unw" 1;
+select -ne :renderPartition;
+	setAttr -s 12 ".st";
+select -ne :initialShadingGroup;
+	setAttr ".ro" yes;
+select -ne :initialParticleSE;
+	setAttr ".ro" yes;
+select -ne :defaultShaderList1;
+	setAttr -s 12 ".s";
+select -ne :defaultTextureList1;
+	setAttr -s 4 ".tx";
+select -ne :lightList1;
+	setAttr -s 2 ".l";
+select -ne :postProcessList1;
+	setAttr -s 2 ".p";
+select -ne :defaultRenderUtilityList1;
+	setAttr -s 7 ".u";
+select -ne :defaultRenderingList1;
+select -ne :renderGlobalsList1;
+select -ne :defaultRenderQuality;
+	setAttr ".rfl" 10;
+	setAttr ".rfr" 10;
+	setAttr ".sl" 10;
+	setAttr ".eaa" 0;
+	setAttr ".ufil" yes;
+	setAttr ".ss" 2;
+	setAttr ".ert" yes;
+select -ne :defaultResolution;
+	setAttr ".w" 1024;
+	setAttr ".h" 1024;
+	setAttr ".pa" 1;
+	setAttr ".dar" 1;
+select -ne :defaultLightSet;
+	setAttr -s 2 ".dsm";
+select -ne :hardwareRenderGlobals;
+	setAttr ".ctrs" 256;
+	setAttr ".btrs" 512;
+select -ne :hardwareRenderingGlobals;
+	setAttr ".otfna" -type "stringArray" 18 "NURBS Curves" "NURBS Surfaces" "Polygons" "Subdiv Surfaces" "Particles" "Fluids" "Image Planes" "UI:" "Lights" "Cameras" "Locators" "Joints" "IK Handles" "Deformers" "Motion Trails" "Components" "Misc. UI" "Ornaments"  ;
+	setAttr ".otfva" -type "Int32Array" 18 0 1 1 1 1 1
+		 1 0 0 0 0 0 0 0 0 0 0 0 ;
+select -ne :defaultHardwareRenderGlobals;
+	setAttr ".fn" -type "string" "im";
+	setAttr ".res" -type "string" "ntsc_4d 646 485 1.333";
+connectAttr "directionalLightShape1.ltd" ":lightList1.l" -na;
+connectAttr "ambientLightShape1.ltd" ":lightList1.l" -na;
+connectAttr "directionalLight1.iog" ":defaultLightSet.dsm" -na;
+connectAttr "ambientLight1.iog" ":defaultLightSet.dsm" -na;
+// End of Lights_LGT.ma
